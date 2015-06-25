@@ -1,6 +1,7 @@
 .git
-jdk.tar.gz
+*.gz
 build.sh
 Dockerfile.centos
-setup.sh
 README.md
+images/*
+.gitignore
