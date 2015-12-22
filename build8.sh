@@ -1,9 +1,9 @@
 #!/bin/bash
 
-Ver="8u45v2"
-JDK_VER="1.8.0_45"
-JDK_MD5="1ad9a5be748fb75b31cd3bd3aa339cac"
-JDK_URL="http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-x64.tar.gz"
+Ver="8u65"
+JDK_VER="1.8.0_65"
+JDK_MD5="196880a42c45ec9ab2f00868d69619c0"
+JDK_URL="http://download.oracle.com/otn-pub/java/jdk/${Ver}-b17/jdk-${Ver}-linux-x64.tar.gz"
 image="docker.xlands-inc.com/baoyu/java8"
 
 current_dir=`dirname $0`
@@ -11,7 +11,7 @@ current_dir=`readlink -f $current_dir`
 cd ${current_dir} && export current_dir
 
 _get_java() {
-  wget --quiet --no-cookies \
+  wget --no-cookies \
     --no-check-certificate  \
     -O ${current_dir}/jdk-${JDK_VER}.tar.gz \
     --header "Cookie: oraclelicense=accept-securebackup-cookie"  \
@@ -27,6 +27,7 @@ _tar_and_clean() {
   [ -d ./jdk ] && rm -rf ./jdk
 
   tar xf ${current_dir}/jdk-${JDK_VER}.tar.gz -C ${current_dir} \
+    && rm -rf ${current_dir}/jdk${JDK_VER}/db \
     && rm -rf ${current_dir}/jdk${JDK_VER}/{COPYRIGHT,LICENSE,man,README.html,release,src.zip}              \
     && rm -f  ${current_dir}/jdk${JDK_VER}/{THIRDPARTYLICENSEREADME-JAVAFX.txt,THIRDPARTYLICENSEREADME.txt} \
     && rm -f  ${current_dir}/jdk${JDK_VER}/javafx-src.zip \

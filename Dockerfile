@@ -1,7 +1,3 @@
-# oracle jdk 7
-#
-# Version 2.0
-
 FROM       docker.xlands-inc.com/baoyu/debian
 MAINTAINER djluo <dj.luo@baoyugame.com>
 
